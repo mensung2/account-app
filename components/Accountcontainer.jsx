@@ -4,7 +4,7 @@ import Accountlist from "./Accountlist";
 import { useState } from "react";
 
 const Accountcontainer = () => {
-  const [cost, setCost] = useState([
+  const [costs, setCosts] = useState([
     {
       id: "25600f72-56b4-41a7-a9c2-47358580e2f8",
       date: "2024-01-05",
@@ -59,9 +59,9 @@ const Accountcontainer = () => {
 
   return (
     <>
-      <Accountform></Accountform>
+      <Accountform cost={costs} setCost={setCosts}></Accountform>
       <Accountcalender></Accountcalender>
-      <Accountlist></Accountlist>
+      <Accountlist cost={costs} setCost={setCosts}></Accountlist>
     </>
   );
 };
