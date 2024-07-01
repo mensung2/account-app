@@ -1,16 +1,20 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { AccountContext } from "./AccountContext";
 
-const Accountform = ({ setCosts, costs }) => {
-  const [date, setDate] = useState(null);
+const Accountform = () => {
+  const [date, setDate] = useState("");
   const [item, setItem] = useState("");
   const [description, setDescription] = useState("");
   const [amount, setAmount] = useState(0);
+  const { costs, setCosts } = useContext(AccountContext);
 
   const handelSubmit = (e) => {
     e.preventDefault();
     if (!date) {
       return alert("날짜를 입력하세요.");
     }
+
+    // id를 걸면 e.target 의 name등을 가져올 수 있다.
 
     const newCost = {
       id: Date.now(),
@@ -22,7 +26,7 @@ const Accountform = ({ setCosts, costs }) => {
 
     setCosts([...costs, newCost]);
 
-    setDate(null);
+    setDate("");
     setItem("");
     setDescription("");
     setAmount(0);

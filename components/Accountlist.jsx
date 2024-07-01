@@ -1,6 +1,10 @@
 import Accountitem from "./Accountitem";
+import { AccountContext } from "./AccountContext";
+import { useContext } from "react";
 
-const Accountlist = ({ costs }) => {
+const Accountlist = () => {
+  const { costs } = useContext(AccountContext);
+  console.log(costs);
   return (
     <div>
       {costs.map((cost) => (

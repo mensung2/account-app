@@ -2,6 +2,7 @@ import Accountform from "./Accountform";
 import Accountcalender from "./Accountcalender";
 import Accountlist from "./Accountlist";
 import { useState } from "react";
+import { AccountContext } from "./AccountContext";
 
 const Accountcontainer = () => {
   const [costs, setCosts] = useState([
@@ -58,11 +59,11 @@ const Accountcontainer = () => {
   ]);
 
   return (
-    <>
-      <Accountform cost={costs} setCost={setCosts}></Accountform>
+    <AccountContext.Provider value={{ costs, setCosts }}>
+      <Accountform></Accountform>
       <Accountcalender></Accountcalender>
-      <Accountlist cost={costs} setCost={setCosts}></Accountlist>
-    </>
+      <Accountlist></Accountlist>
+    </AccountContext.Provider>
   );
 };
 
