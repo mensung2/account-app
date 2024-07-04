@@ -1,3 +1,12 @@
+const ADD_COST = "ADD_COST";
+
+export const addCost = (payload) => {
+  return {
+    type: ADD_COST,
+    payload: payload,
+  };
+};
+
 const initialState = [
   {
     id: "25600f72-56b4-41a7-a9c2-47358580e2f8",
@@ -53,11 +62,11 @@ const initialState = [
 
 const accounts = (state = initialState, action) => {
   switch (action.type) {
-    case value:
-      break;
+    case ADD_COST:
+      return [...state, action.payload];
 
     default:
-      break;
+      state;
   }
 };
 

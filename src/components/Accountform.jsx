@@ -1,39 +1,40 @@
-import { useState, useContext } from "react";
-import { AccountContext } from "./AccountContext";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addCost } from "../redux/modules/accounts";
 
 const Accountform = () => {
   const [date, setDate] = useState("");
   const [item, setItem] = useState("");
   const [description, setDescription] = useState("");
   const [amount, setAmount] = useState(0);
-  const { costs, setCosts } = useContext(AccountContext);
+  const dispatch = useDispatch();
 
-  const handelSubmit = (e) => {
-    e.preventDefault();
-    if (!date) {
-      return alert("날짜를 입력하세요.");
-    }
+  // const handelSubmit = (e) => {
+  //   e.preventDefault();
+  //   if (!date) {
+  //     return alert("날짜를 입력하세요.");
+  //   }
 
-    // id를 걸면 e.target 의 name등을 가져올 수 있다.
+  //   // id를 걸면 e.target 의 name등을 가져올 수 있다.
 
-    const newCost = {
-      id: Date.now(),
-      date: date,
-      item: item,
-      amount: amount,
-      description: description,
-    };
+  //   const newCost = {
+  //     id: Date.now(),
+  //     date: date,
+  //     item: item,
+  //     amount: amount,
+  //     description: description,
+  //   };
 
-    setCosts([...costs, newCost]);
+  //   setCosts([...costs, newCost]);
 
-    setDate("");
-    setItem("");
-    setDescription("");
-    setAmount(0);
-  };
+  //   setDate("");
+  //   setItem("");
+  //   setDescription("");
+  //   setAmount(0);
+  // };
 
   return (
-    <form onSubmit={handelSubmit}>
+    <form onSubmit={addCost()}>
       <div>
         <p>날짜</p>
         <input

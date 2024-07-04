@@ -5,6 +5,4 @@ const rootReducer = combineReducers({
   accounts,
 });
 
-const store = createStore(rootReducer);
-
 export default store;

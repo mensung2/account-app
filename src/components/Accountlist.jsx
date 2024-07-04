@@ -1,13 +1,12 @@
 import Accountitem from "./Accountitem";
-import { AccountContext } from "./AccountContext";
-import { useContext } from "react";
+
+import { useSelector } from "react-redux";
 
 const Accountlist = () => {
-  const { costs } = useContext(AccountContext);
-  console.log(costs);
+  const accounts = useSelector((state) => state.accounts);
   return (
     <div>
-      {costs.map((cost) => (
+      {accounts.map((cost) => (
         <Accountitem
           key={cost.id}
           date={cost.date}
